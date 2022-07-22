@@ -17,58 +17,58 @@ const LIST_IMAGE = [
     id: 1,
     title: "Cộng đồng hỗ trợ",
     subTitle:
-      "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
+      "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế.",
     imageUrl: "/images/slider-img1.jpg",
   },
   {
     id: 2,
     title: "Cộng đồng hỗ trợ",
     subTitle:
-      "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
-    imageUrl: "/images/slider-img2.jpg",
+      "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế.",
+    imageUrl: null,
   },
   {
     id: 3,
+    title: "Cộng đồng hỗ trợ",
+    subTitle:
+      "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế.",
+    imageUrl: "/images/slider-img2.jpg",
+  },
+  {
+    id: 4,
+    title: "Cộng đồng hỗ trợ",
+    subTitle:
+      "Trợ lí ảo duy nhất thị trường hỗ trợ tối đa cho trải nghiệm dã ngoại tuyệt vời",
+    imageUrl: null,
+  },
+  {
+    id: 5,
+    title: "Cộng đồng hỗ trợ",
+    subTitle:
+      "Thông tin chi tiết (địa điểm cắm trại, dụng cụ dã ngoại, tuyến đường, thời tiết,..)",
+    imageUrl: null,
+  },
+  {
+    id: 6,
     title: "Cộng đồng hỗ trợ",
     subTitle:
       "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
     imageUrl: "/images/slider-img3.jpg",
   },
   {
-    id: 4,
+    id: 7,
+    title: "Cộng đồng hỗ trợ",
+    subTitle:
+      "Thiết kế lộ trình thông minh “CHỈ 30 GIÂY” cho kế hoạch dã ngoại hoàn hảo!",
+    imageUrl: null,
+  },
+  {
+    id: 8,
     title: "Cộng đồng hỗ trợ",
     subTitle:
       "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
     imageUrl: "/images/slider-img4.jpg",
   },
-  // {
-  //   id: 5,
-  //   title: "Cộng đồng hỗ trợ",
-  //   subTitle:
-  //     "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
-  //   imageUrl: "@/assets/images/slider-img1.jpg",
-  // },
-  // {
-  //   id: 6,
-  //   title: "Cộng đồng hỗ trợ",
-  //   subTitle:
-  //     "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
-  //   imageUrl: "@/assets/images/slider-img1.jpg",
-  // },
-  // {
-  //   id: 7,
-  //   title: "Cộng đồng hỗ trợ",
-  //   subTitle:
-  //     "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
-  //   imageUrl: "@/assets/images/slider-img1.jpg",
-  // },
-  // {
-  //   id: 8,
-  //   title: "Cộng đồng hỗ trợ",
-  //   subTitle:
-  //     "Cộng đồng trải rộng, tương tác sôi động, chia sẻ trải nghiệm thực tế. ",
-  //   imageUrl: "@/assets/images/slider-img1.jpg",
-  // },
 ]
 
 export interface ILandingLayoutProps {}
@@ -115,7 +115,7 @@ export function LandingLayout({ children }: ILayoutProps) {
                   fontSize: "2.25rem",
                   letterSpacing: "2px",
                   color: "#ffffff",
-                  zIndex: 1100,
+                  zIndex: 1,
                 }}
               >
                 Camping Plaining
@@ -242,7 +242,14 @@ export function LandingLayout({ children }: ILayoutProps) {
               </Typography>
             </Box>
           </Container>
-          <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              mt: 6,
+            }}
+          >
             {LIST_IMAGE.map(item => (
               <Box
                 key={item.id}
@@ -254,21 +261,50 @@ export function LandingLayout({ children }: ILayoutProps) {
                   overflow: "hidden",
                 }}
               >
-                <Box
-                  sx={{
-                    position: "relative",
-                    paddingTop: "66.67%",
-                    backgroundImage: `url(${item?.imageUrl})`,
-                    backgroundPosition: "center center",
-                    backgroundSize: "cover",
-                  }}
-                ></Box>
-                {/* <Image
-                  src={item.imageUrl}
-                  alt="image slide"
-                  width={"100%"}
-                  height={200}
-                ></Image> */}
+                {item.imageUrl ? (
+                  <Box
+                    sx={{
+                      position: "relative",
+                      paddingTop: "66.67%",
+                      backgroundImage: `url(${item?.imageUrl})`,
+                      backgroundPosition: "center center",
+                      backgroundSize: "cover",
+                    }}
+                  ></Box>
+                ) : (
+                  <Box
+                    sx={{
+                      height: "100%",
+                      backgroundColor: "#FDF8F2",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      px: 3,
+                      py: {
+                        xs: 2,
+                        lg: 0,
+                      },
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{ fontSize: "1.25rem", display: "block" }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: "15px",
+                        lineHeight: 1.75,
+                        py: 1,
+                        display: "block",
+                      }}
+                    >
+                      {item.subTitle}
+                    </Typography>
+                  </Box>
+                )}
               </Box>
             ))}
           </Box>
