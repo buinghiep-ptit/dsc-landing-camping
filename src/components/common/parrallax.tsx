@@ -20,7 +20,9 @@ const StyledBoxContainer = styled(Box)({
   overflow: "hidden",
   position: "relative",
   backgroundPosition: "center top",
-  backgroundSize: "cover",
+  // backgroundSize: "cover",
+  // backgroundSize: "100% 100%",
+
   margin: 0,
   padding: 0,
   border: 0,
@@ -34,8 +36,12 @@ export function Parallax({ children, image }: IParallaxProps) {
       sx={{
         backgroundImage: `url(${image?.src || image})`,
         height: {
-          xs: "58vh",
+          // xs: "472px",
           md: "90vh",
+        },
+        backgroundSize: {
+          xs: "100% 100%",
+          md: "cover",
         },
       }}
     >
