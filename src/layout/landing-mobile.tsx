@@ -580,7 +580,6 @@ export function LandingMobileLayout({ children }: ILayoutProps) {
                   sx={{
                     backgroundColor: "#EDFDEF",
                     padding: "16px 16px 20px",
-                    float: "right",
                     borderRadius: "12px",
                     display: "flex",
                     flexDirection: "column",
@@ -943,7 +942,7 @@ export function LandingMobileLayout({ children }: ILayoutProps) {
                   key={item.author}
                   sx={{
                     width: "100%",
-                    backgroundColor: item.opacity ? "#F6F9FE" : "#EFF4FB",
+                    backgroundColor: "#EFF4FB",
                     px: 2,
                     py: 3,
                     borderRadius: "1rem",
