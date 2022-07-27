@@ -1,7 +1,7 @@
-import { LandingLayout } from '@/layout/landing'
-import { Container } from '@mui/material'
-import { Box } from '@mui/system'
-import * as React from 'react'
+import { LandingLayout } from "@/layout"
+import { Container } from "@mui/material"
+import { Box } from "@mui/system"
+import * as React from "react"
 
 export interface ILandingPageProps {}
 

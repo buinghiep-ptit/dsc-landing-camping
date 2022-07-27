@@ -4,16 +4,18 @@ import { styled } from "@mui/material"
 
 export interface IParallaxProps {
   children?: ReactElement
-  image?: {
-    src?: string
-    height?: number
-    width?: number
-    blurDataURL?: string
-  }
+  image:
+    | {
+        src: string
+        height?: number
+        width?: number
+        blurDataURL?: string
+      }
+    | any
 }
 
 const StyledBoxContainer = styled(Box)({
-  height: "90vh",
+  // height: "90vh",
   maxHeight: "1000px",
   overflow: "hidden",
   position: "relative",
@@ -30,7 +32,11 @@ export function Parallax({ children, image }: IParallaxProps) {
   return (
     <StyledBoxContainer
       sx={{
-        backgroundImage: `url(${image?.src})`,
+        backgroundImage: `url(${image?.src || image})`,
+        height: {
+          xs: "58vh",
+          md: "90vh",
+        },
       }}
     >
       {children}

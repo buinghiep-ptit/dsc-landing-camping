@@ -22,6 +22,8 @@ import iconMountain from "../../public/images/svg/mountain-icon.svg"
 
 import Image from "next/image"
 import { theme } from "@/utils"
+import { FadeInSection } from "@/components/common/fadein-section"
+import { Bubble } from "@/components/common/bubble"
 
 const CssTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -55,14 +57,14 @@ const LIST_IMAGE = [
   },
   {
     id: 4,
-    title: "Cộng đồng hỗ trợ",
+    title: "Trợ lý ảo",
     subTitle:
       "Trợ lí ảo duy nhất thị trường hỗ trợ tối đa cho trải nghiệm dã ngoại tuyệt vời",
     imageUrl: null,
   },
   {
     id: 5,
-    title: "Cộng đồng hỗ trợ",
+    title: "Thông tin chính xác",
     subTitle:
       "Thông tin chi tiết (địa điểm cắm trại, dụng cụ dã ngoại, tuyến đường, thời tiết,..)",
     imageUrl: null,
@@ -76,7 +78,7 @@ const LIST_IMAGE = [
   },
   {
     id: 7,
-    title: "Cộng đồng hỗ trợ",
+    title: "Lộ trình thông minh",
     subTitle:
       "Thiết kế lộ trình thông minh “CHỈ 30 GIÂY” cho kế hoạch dã ngoại hoàn hảo!",
     imageUrl: null,
@@ -164,9 +166,14 @@ const StyledButton = styled(Button)({
 
 export interface ILandingLayoutProps {}
 
-export function LandingLayout({ children }: ILayoutProps) {
+export function LandingLayoutDesktop({ children }: ILayoutProps) {
   return (
-    <Box minHeight="100vh">
+    <Box
+      minHeight="100vh"
+      sx={{ overflowX: "hidden" }}
+      display={{ xs: "none", md: "block" }}
+    >
+      <Bubble />
       <Header
         brand="NextJS Material Kit"
         rightLinks={null}
@@ -177,85 +184,85 @@ export function LandingLayout({ children }: ILayoutProps) {
           color: "white",
         }}
       />
-
-      <Parallax image={imageBgParallax}>
-        <Container>
-          <Box sx={{ display: "flex" }}>
-            <Box
-              sx={{
-                position: "relative",
-                display: "flex",
-                // flexDirection: "row",
-                // alignItems: "center",
-                // justifyContent: "center",
-                textAlign: "center",
-              }}
-            >
-              <Image
-                src={imageTitleParallax}
-                alt="camping plaining"
-                width={343}
-                height={89}
-              />
-              <Typography
+      <FadeInSection>
+        <Parallax image={imageBgParallax}>
+          <Container>
+            <Box sx={{ display: "flex" }}>
+              <Box
                 sx={{
-                  width: "100%",
-                  position: "absolute",
-                  // textAlign: "center",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  fontFamily: "Caveat",
-                  fontWeight: 700,
-                  fontSize: "2.25rem",
-                  letterSpacing: "2px",
-                  color: "#ffffff",
-                  zIndex: 1,
+                  position: "relative",
+                  display: "flex",
+                  // flexDirection: "row",
+                  // alignItems: "center",
+                  // justifyContent: "center",
+                  textAlign: "center",
                 }}
               >
-                Camping Plaining
-              </Typography>
+                <Image
+                  src={imageTitleParallax}
+                  alt="camping plaining"
+                  width={343}
+                  height={89}
+                />
+                <Typography
+                  sx={{
+                    width: "100%",
+                    position: "absolute",
+                    // textAlign: "center",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    fontFamily: "Caveat",
+                    fontWeight: 700,
+                    fontSize: "2.25rem",
+                    letterSpacing: "2px",
+                    color: "#ffffff",
+                    zIndex: 1,
+                  }}
+                >
+                  Camping Plaining
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-          <Box sx={{ px: 3 }}>
-            <Stack direction={"row"} mt={-0.5}>
+            <Box sx={{ px: 3 }}>
+              <Stack direction={"row"} mt={-0.5}>
+                <Typography
+                  sx={{
+                    fontFamily: "Livvic",
+                    fontWeight: 900,
+                    lineHeight: "64px",
+                    fontSize: "3rem",
+                    color: "#101426",
+                  }}
+                >
+                  Dã ngoại thông minh
+                </Typography>
+                <Box mt={-1.5} px={0.5}>
+                  <Image
+                    src={"/images/svg/tree-talent-icon.svg"}
+                    alt="award icon"
+                    width={32}
+                    height={40}
+                  />
+                </Box>
+              </Stack>
+
               <Typography
                 sx={{
                   fontFamily: "Livvic",
-                  fontWeight: 900,
-                  lineHeight: "64px",
-                  fontSize: "3rem",
+                  fontWeight: 600,
+                  fontSize: "1.5rem",
                   color: "#101426",
                   zIndex: 1100,
                 }}
               >
-                Dã ngoại thông minh
+                Thu nhập không giới hạn cho các KOL
               </Typography>
-              <Box mt={-1.5} px={0.5}>
-                <Image
-                  src={"/images/svg/tree-talent-icon.svg"}
-                  alt="award icon"
-                  width={32}
-                  height={40}
-                />
-              </Box>
-            </Stack>
-
-            <Typography
-              sx={{
-                fontFamily: "Livvic",
-                fontWeight: 600,
-                fontSize: "1.5rem",
-                color: "#101426",
-                zIndex: 1100,
-              }}
-            >
-              Thu nhập không giới hạn cho các KOL
-            </Typography>
-          </Box>
-        </Container>
-      </Parallax>
+            </Box>
+          </Container>
+        </Parallax>
+      </FadeInSection>
 
       <Container>
         <Box sx={{ py: 0, position: "relative" }}>
@@ -316,7 +323,7 @@ export function LandingLayout({ children }: ILayoutProps) {
             </Box>
           </Box>
           <Container maxWidth="md">
-            <Box sx={{ textAlign: "center" }}>
+            <FadeInSection fadeType="fade-down" sx={{ textAlign: "center" }}>
               <Typography
                 variant="h3"
                 sx={{
@@ -349,7 +356,7 @@ export function LandingLayout({ children }: ILayoutProps) {
                 nghiệm dã ngoại, cung cấp dụng cụ Camping, Booking đặt chỗ các
                 điểm Camping, Glamping, Farmstay,...
               </Typography>
-            </Box>
+            </FadeInSection>
           </Container>
 
           <Box
@@ -372,17 +379,20 @@ export function LandingLayout({ children }: ILayoutProps) {
                 }}
               >
                 {item.imageUrl ? (
-                  <Box
-                    sx={{
-                      position: "relative",
-                      paddingTop: "66.67%",
-                      backgroundImage: `url(${item?.imageUrl})`,
-                      backgroundPosition: "center center",
-                      backgroundSize: "cover",
-                    }}
-                  ></Box>
+                  <FadeInSection fadeType="fade-up">
+                    <Box
+                      sx={{
+                        position: "relative",
+                        paddingTop: "66.67%",
+                        backgroundImage: `url(${item?.imageUrl})`,
+                        backgroundPosition: "center center",
+                        backgroundSize: "cover",
+                      }}
+                    ></Box>
+                  </FadeInSection>
                 ) : (
-                  <Box
+                  <FadeInSection
+                    fadeType="fade-down"
                     sx={{
                       height: "100%",
                       backgroundColor: "#FDF8F2",
@@ -413,7 +423,7 @@ export function LandingLayout({ children }: ILayoutProps) {
                     >
                       {item.subTitle}
                     </Typography>
-                  </Box>
+                  </FadeInSection>
                 )}
               </Box>
             ))}
@@ -432,7 +442,8 @@ export function LandingLayout({ children }: ILayoutProps) {
                 },
               }}
             >
-              <Box
+              <FadeInSection
+                fadeType="fade-right"
                 pr={1}
                 sx={{
                   display: "flex",
@@ -491,10 +502,11 @@ export function LandingLayout({ children }: ILayoutProps) {
                 <StyledButton variant="contained">
                   Đăng ký tham gia ngay
                 </StyledButton>
-              </Box>
+              </FadeInSection>
 
-              <Box mt={4}>
+              <FadeInSection fadeType="fade-left">
                 <Box
+                  mt={4}
                   sx={{
                     backgroundColor: "#EDFDEF",
                     padding: "32px 56px 40px",
@@ -595,154 +607,156 @@ export function LandingLayout({ children }: ILayoutProps) {
                     </Typography>
                   </Stack>
                 </Box>
-              </Box>
+              </FadeInSection>
             </Stack>
           </Box>
         </Box>
       </Container>
 
       <Box bgcolor={"#00182C"} mt={10}>
-        <Container>
-          <Box position={"relative"} pb={4} pt={4.5}>
-            <Box
-              sx={{
-                position: "absolute",
-                top: 0,
-              }}
-            >
-              <Image src={iconMountain} alt="icon" />
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-end ",
-              }}
-            >
-              <Stack direction={"row"}>
-                <Image
-                  src={"/images/svg/tree-talent-reverse-icon.svg"}
-                  alt="icon"
-                  width={32}
-                  height={40}
-                />
-                <Typography
-                  variant="h3"
-                  sx={{
-                    fontFamily: "Livvic",
-                    fontWeight: 900,
-                    letterSpacing: "0.5px",
-                    color: "#FF7836",
-                    pt: 4,
-                    pl: 1,
-                  }}
-                >
-                  Hành trình hợp tác
-                </Typography>
-              </Stack>
-
-              <Typography
-                variant="h5"
+        <FadeInSection>
+          <Container>
+            <Box position={"relative"} pb={4} pt={4.5}>
+              <Box
                 sx={{
-                  fontFamily: "Livvic",
-                  fontWeight: 700,
-                  letterSpacing: "0.5px",
-                  color: "#ffffff",
-                  pt: 0.5,
+                  position: "absolute",
+                  top: 0,
                 }}
               >
-                Camping Planning và thành viên
-              </Typography>
-            </Box>
+                <Image src={iconMountain} alt="icon" />
+              </Box>
 
-            <Stack
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                py: 3.5,
-                px: 17,
-                gap: "97px",
-              }}
-            >
-              {LIST_JOURNEY.map((item, index) => (
-                <Box
-                  key={index}
-                  pt={index === 1 ? 13 : 0}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end ",
+                }}
+              >
+                <Stack direction={"row"}>
+                  <Image
+                    src={"/images/svg/tree-talent-reverse-icon.svg"}
+                    alt="icon"
+                    width={32}
+                    height={40}
+                  />
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontFamily: "Livvic",
+                      fontWeight: 900,
+                      letterSpacing: "0.5px",
+                      color: "#FF7836",
+                      pt: 4,
+                      pl: 1,
+                    }}
+                  >
+                    Hành trình hợp tác
+                  </Typography>
+                </Stack>
+
+                <Typography
+                  variant="h5"
                   sx={{
-                    width: {
-                      xs: "100%",
-                      lg: "33.33%",
-                    },
-                    overflow: "hidden",
-                    position: "relative",
+                    fontFamily: "Livvic",
+                    fontWeight: 700,
+                    letterSpacing: "0.5px",
+                    color: "#ffffff",
+                    pt: 0.5,
                   }}
                 >
+                  Camping Planning và thành viên
+                </Typography>
+              </Box>
+
+              <Stack
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  py: 3.5,
+                  px: 17,
+                  gap: "97px",
+                }}
+              >
+                {LIST_JOURNEY.map((item, index) => (
                   <Box
+                    key={index}
+                    pt={index === 1 ? 13 : 0}
                     sx={{
+                      width: {
+                        xs: "100%",
+                        lg: "33.33%",
+                      },
+                      overflow: "hidden",
                       position: "relative",
-                      paddingTop: "100%",
-                      backgroundImage: `url('/images/bg-erase.png')`,
-                      backgroundPosition: "center center",
-                      backgroundSize: "contain",
                     }}
                   >
                     <Box
                       sx={{
-                        position: "absolute",
-                        top: 0,
-                        width: "100%",
-                        height: "100%",
+                        position: "relative",
+                        paddingTop: "100%",
+                        backgroundImage: `url('/images/bg-erase.png')`,
+                        backgroundPosition: "center center",
+                        backgroundSize: "contain",
                       }}
                     >
-                      <Stack
+                      <Box
                         sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          position: "absolute",
+                          top: 0,
                           width: "100%",
                           height: "100%",
-                          gap: "8px",
-                          textAlign: "center",
                         }}
                       >
-                        <Image
-                          src={item.icon}
-                          alt="award icon"
-                          width={32}
-                          height={32}
-                        />
-
-                        <Typography
-                          variant="h6"
+                        <Stack
                           sx={{
-                            fontWeight: 600,
-                            color: "#ffffff",
-                            lineHeight: 1.875,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "100%",
+                            height: "100%",
+                            gap: "8px",
+                            textAlign: "center",
                           }}
                         >
-                          {item.title}
-                        </Typography>
+                          <Image
+                            src={item.icon}
+                            alt="award icon"
+                            width={32}
+                            height={32}
+                          />
 
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: 400,
-                            fontSize: "15px",
-                            color: "#AEBAD5",
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          {item.description}
-                        </Typography>
-                      </Stack>
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              fontWeight: 600,
+                              color: "#ffffff",
+                              lineHeight: 1.875,
+                            }}
+                          >
+                            {item.title}
+                          </Typography>
+
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              fontWeight: 400,
+                              fontSize: "15px",
+                              color: "#AEBAD5",
+                              lineHeight: 1.5,
+                            }}
+                          >
+                            {item.description}
+                          </Typography>
+                        </Stack>
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
-              ))}
-            </Stack>
-          </Box>
-        </Container>
+                ))}
+              </Stack>
+            </Box>
+          </Container>
+        </FadeInSection>
       </Box>
 
       <Box mt={6.5}>
@@ -881,16 +895,16 @@ export function LandingLayout({ children }: ILayoutProps) {
 
       <Box mt={10} bgcolor={"#FCF5ED"}>
         <Container>
-          <Stack direction={"row"} gap={"26px"}>
-            <Box
+          <Stack direction={{ xs: "column", md: "row" }} gap={"26px"}>
+            <FadeInSection
+              fadeType="fade-left"
               component="form"
-              noValidate
-              autoComplete="off"
               sx={{
                 backgroundColor: "#181D33",
                 borderRadius: "24px",
                 p: 5,
                 my: 10,
+                zIndex: 2,
               }}
             >
               <Stack direction={"column"} gap={"16px"}>
@@ -995,8 +1009,9 @@ export function LandingLayout({ children }: ILayoutProps) {
                   Đăng ký tham gia ngay
                 </StyledButton>
               </Stack>
-            </Box>
-            <Box
+            </FadeInSection>
+            <FadeInSection
+              fadeType="fade-right"
               sx={{
                 flex: 1,
                 position: "relative",
@@ -1005,6 +1020,7 @@ export function LandingLayout({ children }: ILayoutProps) {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "contain",
                 backgroundImage: `url("/images/bg-signup-location.png")`,
+                zIndex: 1,
               }}
             >
               <Box
@@ -1042,7 +1058,7 @@ export function LandingLayout({ children }: ILayoutProps) {
                   Camping Plaining
                 </Typography>
               </Box>
-            </Box>
+            </FadeInSection>
           </Stack>
         </Container>
       </Box>

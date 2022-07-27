@@ -17,6 +17,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import logo from "@/assets/images/logo-fpt-telecom.svg"
 import { CustomizedNavTabs } from "../common/custom-nav-tabs"
+import { FadeInSection } from "../common/fadein-section"
 
 interface Props {
   /**
@@ -47,7 +48,7 @@ const StyledAppBar = styled(AppBar)<StyledAppBarProps>(({ open, theme }) => {
     display: "flex",
     border: "0",
     borderRadius: "3px",
-    padding: "0.625rem 0",
+    padding: open ? "0.625rem 0" : 0,
     marginBottom: "20px",
     color: "#555",
     width: "100%",
@@ -55,7 +56,8 @@ const StyledAppBar = styled(AppBar)<StyledAppBarProps>(({ open, theme }) => {
     boxShadow: open
       ? "none"
       : "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
-    transition: "all 150ms ease 0s",
+    transition: "all .3s ease-out 0s",
+
     // alignItems: "center",
     // flexFlow: "row nowrap",
     // justifyContent: "flex-start",
@@ -140,36 +142,59 @@ export function Header(props: Props) {
   const container = undefined
 
   return (
-    <Box component="header" sx={{ display: "flex" }}>
+    <Box component="header" sx={{ display: "flex", px: 0 }}>
       <StyledAppBar open={open}>
-        <Container>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Box
+        <FadeInSection>
+          <Container>
+            <Toolbar
               sx={{
-                flexGrow: 1,
-                textAlign: { xs: "center", sm: "left" },
-                // display: { xs: "none", sm: "block" },
+                px: { xs: 0 },
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
-              <Image src={logo} alt="logo" width={"100%"} />
-            </Box>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2, display: { sm: "none" } }}
+              >
+                <MenuIcon />
+              </IconButton>
 
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <CustomizedNavTabs navItems={navItems} />
-            </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexGrow: 1,
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Image src={logo} alt="logo" width={"100%"} />
+                <StyledButton
+                  variant="contained"
+                  sx={{ px: 2, display: { xs: "block", md: "none" } }}
+                >
+                  Đăng ký
+                </StyledButton>
+              </Box>
 
-            <StyledButton variant="contained">Đăng ký</StyledButton>
-          </Toolbar>
-        </Container>
+              <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                <CustomizedNavTabs navItems={navItems} />
+              </Box>
+
+              <StyledButton
+                variant="contained"
+                sx={{ px: 2, display: { xs: "none", md: "block" } }}
+              >
+                Đăng ký
+              </StyledButton>
+            </Toolbar>
+          </Container>
+        </FadeInSection>
       </StyledAppBar>
       <Box component="nav">
         <Drawer

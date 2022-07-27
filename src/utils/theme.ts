@@ -31,10 +31,12 @@ export let theme = createTheme({
       },
       styleOverrides: {
         root: {
-          paddingLeft: "0px!important",
-          paddingRight: "0px!important",
+          // paddingLeft: "0px!important",
+          // paddingRight: "0px!important",
         },
         maxWidthSm: {
+          // paddingLeft: "0px!important",
+          // paddingRight: "0px!important",
           maxWidth: "680px",
           "@media (min-width: 600px)": {
             maxWidth: "680px",
@@ -47,9 +49,9 @@ export let theme = createTheme({
           },
         },
         maxWidthLg: {
-          maxWidth: "1250px",
+          maxWidth: "1290px",
           "@media (min-width: 1025px)": {
-            maxWidth: "1250px",
+            maxWidth: "1290px",
           },
         },
       },
