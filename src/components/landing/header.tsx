@@ -176,7 +176,7 @@ export function Header(props: Props) {
                 <Image src={logo} alt="logo" width={"100%"} />
                 <StyledButton
                   variant="contained"
-                  sx={{ px: 2, display: { xs: "block", md: "none" } }}
+                  sx={{ px: 2, display: { xs: "block", sm: "none" } }}
                 >
                   Đăng ký
                 </StyledButton>
@@ -188,7 +188,7 @@ export function Header(props: Props) {
 
               <StyledButton
                 variant="contained"
-                sx={{ px: 2, display: { xs: "none", md: "block" } }}
+                sx={{ px: 3, display: { xs: "none", sm: "block" } }}
               >
                 Đăng ký
               </StyledButton>
