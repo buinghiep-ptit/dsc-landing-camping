@@ -1,51 +1,36 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
 
-export interface IHelmetSeoProps {}
+export interface IHelmetSeoProps {
+  title: string
+  metaDescription: string
+}
 
-export default function HelmetSeo(props: IHelmetSeoProps) {
+export default function HelmetSeo({
+  title = "Portfolio - your name",
+  metaDescription = "defaul tdescription",
+}: IHelmetSeoProps) {
   return (
-    <div>
-      <Helmet>
-        <title>{"Helmet Seo Page Title"}</title>
-        <meta
-          name="description"
-          content={
-            "Helmet Page, Nền tảng cung cấp thông tin đầy đủ nhất về Dã ngoại"
-          }
-        />
-        <meta property="og:title" content={"Helmet Seo Page Title"} />
-        <meta
-          property="og:description"
-          content={
-            "Helmet Page, Nền tảng cung cấp thông tin đầy đủ nhất về Dã ngoại"
-          }
-        />
-        <meta
-          property="og:image"
-          itemProp="image"
-          content={"https://img.youtube.com/vi/DyenfhZB7IA/sddefault.jpg"}
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={"https://dsc-landing-camping.vercel.app"}
-        />
-        <meta property="twitter:title" content={"Helmet Seo Page Title"} />
-        <meta
-          property="twitter:description"
-          content={
-            "Helmet Page, Nền tảng cung cấp thông tin đầy đủ nhất về Dã ngoại"
-          }
-        />
-        <meta
-          property="twitter:image"
-          itemProp="image"
-          content={"https://img.youtube.com/vi/DyenfhZB7IA/sddefault.jpg"}
-        />
-        <meta property="twitter:card" content="summary_large_image" />
-      </Helmet>
-      <h1>HelmetSeo</h1>
-    </div>
+    <Helmet>
+      <title>{title}</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="description" key="description" content={metaDescription} />
+      <meta name="title" key="title" content={title} />
+      <meta property="og:title" key="og:title" content={title} />
+      <meta property="og:locale" key="og:locale" content="en_US" />
+      <meta charSet="utf-8" />
+      <meta property="og:type" key="og:type" content="website" />
+      <meta
+        property="og:description"
+        key="og:description"
+        content={metaDescription}
+      />
+      <meta
+        property="og:image"
+        key="og:image"
+        content={`https://img.youtube.com/vi/DyenfhZB7IA/sddefault.jpg`}
+      />
+    </Helmet>
   )
 }
