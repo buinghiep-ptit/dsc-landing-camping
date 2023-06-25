@@ -1,5 +1,4 @@
 import Head from "next/head"
-import { Helmet } from "react-helmet"
 
 const defaultMeta = {
   title: "DSC Camping",
@@ -28,7 +27,7 @@ export default function Seo(props: SeoProps) {
     : meta.title
 
   return (
-    <Helmet>
+    <Head>
       {/* Search Engine Optimization Meta Tags */}
       <title>{meta.title}</title>
       <meta name="robots" content={meta.robots} />
@@ -65,6 +64,6 @@ export default function Seo(props: SeoProps) {
 
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="theme-color" content="#ffffff" />
-    </Helmet>
+    </Head>
   )
 }

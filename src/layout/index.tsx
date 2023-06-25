@@ -11,7 +11,7 @@ export function LandingLayout(props: ILayoutProps) {
     <>
       <Seo
         title="Campdi | Trang chủ"
-        description="Trang thông tin về các điểm dã ngoại, đắt vé"
+        description="Trang thông tin về các điểm dã ngoại, booking"
         url="https://dsc-landing-camping.vercel.app/"
         image="https://cdn.campdi.vn/camping/Feed/campdi_1684747414092_804_compressed.jpeg"
       />
