@@ -24,12 +24,13 @@ export default function HelmetSeo(props: IHelmetSeoProps) {
         <meta
           property="og:image"
           itemProp="image"
-          content={
-            "https://cdn.campdi.vn/camping/Feed/campdi_1684747414092_804_compressed.jpeg"
-          }
+          content={"https://img.youtube.com/vi/DyenfhZB7IA/sddefault.jpg"}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={location.href} />
+        <meta
+          property="og:url"
+          content={"https://dsc-landing-camping.vercel.app"}
+        />
         <meta property="twitter:title" content={"Helmet Seo Page Title"} />
         <meta
           property="twitter:description"
@@ -40,9 +41,7 @@ export default function HelmetSeo(props: IHelmetSeoProps) {
         <meta
           property="twitter:image"
           itemProp="image"
-          content={
-            "https://cdn.campdi.vn/camping/Feed/campdi_1684747414092_804_compressed.jpeg"
-          }
+          content={"https://img.youtube.com/vi/DyenfhZB7IA/sddefault.jpg"}
         />
         <meta property="twitter:card" content="summary_large_image" />
       </Helmet>
