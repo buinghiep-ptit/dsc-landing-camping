@@ -13,7 +13,17 @@ export default function HelmetSeo({
   metaDescription = "defaul tdescription",
   data,
 }: IHelmetSeoProps) {
-  console.log("data proxy:", data)
+  React.useEffect(() => {
+    ;(async () => {
+      try {
+        const response = await axios.get(
+          "https://dsc-landing-camping.vercel.app/api/public/news/30",
+        )
+        console.log("data csr proxy https:", response.data)
+      } catch (error) {}
+    })()
+  }, [])
+  console.log("data ssr proxy https:", data)
   return (
     <Helmet>
       <title>{"title"}</title>
