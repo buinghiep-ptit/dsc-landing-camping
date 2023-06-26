@@ -17,12 +17,11 @@ export default function HelmetSeo({
     ;(async () => {
       try {
         const response = await axios.get("/api/public/news/30")
-
         console.log("data csr proxy https:", response.data)
       } catch (error) {}
     })()
   }, [])
-  console.log("data ssr proxy https:", data)
+  console.log("data ssr proxy https update:", data)
   return (
     <Helmet>
       <title>{"title"}</title>
@@ -50,7 +49,9 @@ export default function HelmetSeo({
 
 export async function getServerSideProps() {
   try {
-    const response = await axios.get("/api/public/news/30")
+    const response = await axios.get(
+      "https://dsc-landing-camping.vercel.app/api/public/news/30",
+    )
 
     const data = response.data
 
