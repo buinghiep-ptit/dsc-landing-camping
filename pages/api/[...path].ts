@@ -22,7 +22,7 @@ export default function handler(
   return new Promise((resolve, reject) => {
     req.headers.cookie = ""
     const option = {
-      target: "https://js-post-api.herokuapp.com",
+      target: "https://cahn-api.campdi.vn/cahnfc",
       changeOrigin: true,
       selfHandleResponse: false,
     }
