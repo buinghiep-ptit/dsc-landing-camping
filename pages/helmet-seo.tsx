@@ -49,9 +49,7 @@ export default function HelmetSeo({
 
 export async function getServerSideProps() {
   try {
-    const response = await axios.get(
-      "https://dsc-landing-camping.vercel.app/api/public/news/30",
-    )
+    const response = await axios.get("/api/public/news/30")
 
     const data = response.data
 
@@ -66,7 +64,7 @@ export async function getServerSideProps() {
     console.error("Error:", error)
     return {
       props: {
-        error: "Failed to fetch data from proxy endpoint",
+        data: error,
       },
     }
   }
