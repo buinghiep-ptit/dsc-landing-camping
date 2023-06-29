@@ -50,7 +50,7 @@ export default function ProxyTestPage({
 export async function getServerSideProps() {
   try {
     const response = await axios.get(
-      "https://dsc-landing-camping.vercel.app/api/public/news/30",
+      "https://dsc-landing-camping.vercel.app/api/public/videos",
     )
 
     const data = response.data
