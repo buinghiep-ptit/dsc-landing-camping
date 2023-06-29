@@ -13,7 +13,15 @@ export default function ProxyTestPage({
   metaDescription = "defaul tdescription",
   data,
 }: IHelmetSeoProps) {
-  console.log("data proxy test:", data)
+  React.useEffect(() => {
+    ;(async () => {
+      try {
+        const response = await axios.get("/api/public/news/30")
+        console.log("data csr proxy test:", response.data)
+      } catch (error) {}
+    })()
+  }, [])
+  console.log("data ssr proxy test:", data)
   return (
     <Helmet>
       <title>{"title"}</title>
@@ -42,7 +50,7 @@ export default function ProxyTestPage({
 export async function getServerSideProps() {
   try {
     const response = await axios.get(
-      "https://dev09.campdi.vn/api/students?_page=1",
+      "https://dsc-landing-camping.vercel.app/api/public/news/30",
     )
 
     const data = response.data
