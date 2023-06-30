@@ -51,8 +51,12 @@ export default function ProxyTestPage({
 export async function getServerSideProps() {
   const axiosDefaultConfig = {
     baseURL: "https://jsonplaceholder.typicode.com/posts",
-    proxy: false,
-    httpsAgent: new HttpsProxyAgent("http://142.93.165.82:8080"),
+    proxy: {
+      protocol: "http",
+      host: "142.93.165.82",
+      port: 8080,
+    },
+    // httpsAgent: new HttpsProxyAgent("http://142.93.165.82:8080"),
   }
 
   const instance = require("axios").create(axiosDefaultConfig)
