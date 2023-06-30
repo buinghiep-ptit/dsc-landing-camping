@@ -1,4 +1,5 @@
 import axios from "axios"
+import { HttpsProxyAgent } from "https-proxy-agent"
 import * as React from "react"
 import { Helmet } from "react-helmet"
 
@@ -48,25 +49,25 @@ export default function ProxyTestPage({
 }
 
 export async function getServerSideProps() {
+  const axiosDefaultConfig = {
+    baseURL: "https://jsonplaceholder.typicode.com/posts",
+    proxy: false,
+    httpsAgent: new HttpsProxyAgent("http://142.93.165.82:8080"),
+  }
+
+  const instance = require("axios").create(axiosDefaultConfig)
+
   try {
-    const response = await axios.get(
-      "https://dsc-landing-camping.vercel.app/api/public/videos",
-    )
-
-    const data = response.data
-
-    // Xử lý dữ liệu trả về từ endpoint proxy
-
+    const response = await instance.get("42")
     return {
       props: {
-        data,
+        data: response.data,
       },
     }
   } catch (error) {
-    console.error("Error:", error)
     return {
       props: {
-        error: "Failed to fetch data from proxy endpoint",
+        data: `${error}`,
       },
     }
   }
