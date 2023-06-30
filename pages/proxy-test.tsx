@@ -16,10 +16,21 @@ export default function ProxyTestPage({
 }: IHelmetSeoProps) {
   React.useEffect(() => {
     ;(async () => {
-      try {
-        const response = await axios.get("/api/public/news/30")
-        console.log("data csr proxy test:", response.data)
-      } catch (error) {}
+      const axiosDefaultConfig = {
+        baseURL: "https://jsonplaceholder.typicode.com/posts",
+        proxy: false,
+        httpsAgent: new HttpsProxyAgent("http://142.93.165.82:8080"),
+      }
+
+      const axios = require("axios").create(axiosDefaultConfig)
+      axios
+        .get("42")
+        .then(function (response: any) {
+          console.log("Response with axios was ok: " + response.status)
+        })
+        .catch(function (error: any) {
+          console.log(error)
+        })
     })()
   }, [])
   console.log("data ssr proxy test:", data)
