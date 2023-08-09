@@ -44,18 +44,20 @@ function App({
             })(document, "script", "facebook-jssdk");
           `
   return (
-    <CacheProvider value={emotionCache}>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
+    <>
+      <CacheProvider value={emotionCache}>
+        <StyledEngineProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
 
-          <Layout>
-            <Component {...pageProps} />
-            <div dangerouslySetInnerHTML={{ __html: fbChatContent }} />
-          </Layout>
-        </ThemeProvider>
-      </StyledEngineProvider>
-    </CacheProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
+        </StyledEngineProvider>
+      </CacheProvider>
+      <div dangerouslySetInnerHTML={{ __html: fbChatContent }} />
+    </>
   )
 }
 
