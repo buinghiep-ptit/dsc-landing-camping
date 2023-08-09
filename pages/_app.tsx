@@ -2,7 +2,6 @@ import { EmptyLayout } from "@/layout/empty"
 import { AppPropsWithLayout } from "@/models/common"
 import { createEmotionCache, theme } from "@/utils"
 import { CacheProvider, EmotionCache } from "@emotion/react"
-import { Box } from "@mui/material"
 import CssBaseline from "@mui/material/CssBaseline"
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles"
 import { useState } from "react"
@@ -57,8 +56,8 @@ function App({
           </ThemeProvider>
         </StyledEngineProvider>
       </CacheProvider>
-      <Box id="fb-root"></Box>
-      <Box id="fb-customer-chat" className="fb-customerchat"></Box>
+      <div id="fb-root"></div>
+      <div id="fb-customer-chat" className="fb-customerchat"></div>
       {/* <script dangerouslySetInnerHTML={{ __html: fbChatContent }} /> */}
     </>
   )
