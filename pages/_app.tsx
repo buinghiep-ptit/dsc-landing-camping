@@ -58,7 +58,7 @@ function App({
       </CacheProvider>
       <div id="fb-root"></div>
       <div id="fb-customer-chat" className="fb-customerchat"></div>
-      <div dangerouslySetInnerHTML={{ __html: fbChatContent }} />
+      <script dangerouslySetInnerHTML={{ __html: fbChatContent }} />
     </>
   )
 }
