@@ -4,7 +4,7 @@ import { createEmotionCache, theme } from "@/utils"
 import { CacheProvider, EmotionCache } from "@emotion/react"
 import CssBaseline from "@mui/material/CssBaseline"
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../styles/globals.css"
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -23,28 +23,39 @@ function App({
 
   const [isShowChatBox, setIsShowChatBox] = useState(true)
 
-  const fbChatContent = `
-            var chatbox = document.getElementById("fb-customer-chat");
-            chatbox.setAttribute("page_id", "119952837764885");
-            chatbox.setAttribute("attribution", "biz_inbox");
+  useEffect(() => {
+    var standalone = (window.navigator as any).standalone,
+      userAgent = window.navigator.userAgent.toLowerCase(),
+      safari = /safari/.test(userAgent),
+      ios = /iphone|ipod|ipad/.test(userAgent)
 
-            window.fbAsyncInit = function () {
-              FB.init({
-                xfbml: true,
-                version: "v16.0",
-              });
-            };
+    if (ios) {
+      if (!standalone && safari) {
+        console.log("browser")
 
-            (function (d, s, id) {
-              var js,
-                fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s);
-              js.id = id;
-              js.src = "https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js";
-              fjs.parentNode.insertBefore(js, fjs);
-            })(document, "script", "facebook-jssdk");
-          `
+        // document.getElementById("where-am-i").textContent = "browser"
+      } else if (standalone && !safari) {
+        // document.getElementById("where-am-i").textContent = "standalone"
+      } else if (!standalone && !safari) {
+        // document.getElementById("where-am-i").textContent = "uiwebview"
+        setIsShowChatBox(false)
+      }
+    } else {
+      console.log("not iOS")
+      // document.getElementById("where-am-i").textContent = "not iOS"
+      if (!standalone && safari) {
+        console.log("browser")
+
+        // document.getElementById("where-am-i").textContent = "browser"
+      } else if (standalone && !safari) {
+        // document.getElementById("where-am-i").textContent = "standalone"
+      } else if (!standalone && !safari) {
+        // document.getElementById("where-am-i").textContent = "uiwebview"
+        setIsShowChatBox(false)
+      }
+    }
+  }, [])
+
   return (
     <>
       <CacheProvider value={emotionCache}>
