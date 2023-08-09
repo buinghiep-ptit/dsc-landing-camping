@@ -35,11 +35,11 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-        {/* <div id="fb-root"></div>
+        <div id="fb-root"></div>
 
-        <div id="fb-customer-chat" className="fb-customerchat"></div> */}
+        <div id="fb-customer-chat" className="fb-customerchat"></div>
 
-        {/* <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
             var chatbox = document.getElementById("fb-customer-chat");
@@ -64,7 +64,7 @@ export default class MyDocument extends Document {
             })(document, "script", "facebook-jssdk");
           `,
           }}
-        /> */}
+        />
       </Html>
     )
   }
