@@ -58,12 +58,8 @@ function App({
           </ThemeProvider>
         </StyledEngineProvider>
       </CacheProvider>
-      {isShowChatBox && (
-        <>
-          <div id="fb-root"></div>
-          <div id="fb-customer-chat" className="fb-customerchat"></div>
-        </>
-      )}
+      {isShowChatBox && <div id="fb-root"></div>}
+      <div id="fb-customer-chat" className="fb-customerchat"></div>
 
       {/* <script dangerouslySetInnerHTML={{ __html: fbChatContent }} /> */}
     </>
