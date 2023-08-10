@@ -11,6 +11,12 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6335200820164528`}
+            strategy="lazyOnload"
+            crossOrigin="anonymous"
+          />
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="icon" type="image/x-icon" href="/favicon.ico" />
           <link rel="shortcut icon" href="/static/favicon.ico" />
